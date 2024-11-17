@@ -1,0 +1,51 @@
+{
+	"icons": [ "paxy97", "awesome-fonts" ],
+  "colors": [{
+    "black": "#1d2021",
+    "white": "#ebdbb2",
+    "yellow": "#d79921",
+    "red": "#cc241d",
+    "green": "#b8bb26",
+    "gray": "#393939"
+  }],
+	"defaults": {
+		"warning": {
+			"fg": "black",
+			"bg": "yellow"
+		},
+		"critical": {
+			"fg": "white",
+			"bg": "red"
+		}
+	},
+  "battery": {
+		"charged": {
+			"fg": "black",
+			"bg": "green"
+		},
+		"AC": {
+			"fg": "black",
+			"bg": "green"
+		}
+	},
+  "playerctl": {
+    "fg": "black",
+    "bg": "yellow"
+  },
+  "date": {
+    "fg": "white",
+    "bg": "black"
+  },
+  "time": {
+    "fg": "white",
+    "bg": "black"
+  },
+  "amixer": {
+    "fg": "white",
+    "bg": "gray"
+  },
+  "system": {
+    "fg": "white",
+    "bg": "red"
+  }
+}

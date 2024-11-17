@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Fira mono 9
+font pango:Fira mono 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -179,14 +179,24 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango:FontAwesome, Fira mono 9
+        font pango:FontAwesome, Fira mono 10
         tray_output none
-        status_command /home/$USER/.config/i3/bumblebee-status \
-            -m playerctl amixer date time battery system \
+        i3bar_command i3bar -t
+        colors {
+            background $black
+            separator #ffffffff
+            #                   border            background            text
+            focused_workspace   #b8bb26 #b8bb26 #1d2021
+            inactive_workspace  #1d2021 #1d2021 #ebdbb2
+            urgent_workspace    #cc241d #cc241d #ebdbb2
+        }
+        status_command $HOME/.config/bumblebee-status/bumblebee-status \
+            -m playerctl date time amixer battery system \
             --iconset awesome-fonts \
             -p date.format="%a, %b %d %Y" time.format="%T" \
                playerctl.layout="playerctl.prev, playerctl.pause, playerctl.song, playerctl.next" \
-            -t gruvbox
+               amixer.percent_change="0" \
+            -t bunnybee
 }
 # gaps
 gaps inner 10
@@ -207,16 +217,14 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 # color palette
-set $bgcolor    #FCE8DB
-set $focused-ws #523d64
-set $bar-color  #523d64
-set $in-bgcolor #363636
-set $text       #ffffff
-set $u-bgcolor  #ff0000
-set $indicator  #a8a3c1
-set $in-text    #969696
+set $black      #1d20217d
+set $white      #ebdbb27d
+set $yellow     #d799217d
+set $red        #cc241d7d
+set $green      #b8bb267d
+set $gray       #3939397d
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
-client.focused          $bgcolor        $bgcolor        $text           $indicator
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
+client.focused          $yellow         $yellow         $black           $red
+client.unfocused        $green          $gray           $black           $red
+client.focused_inactive $green          $gray           $black           $red
+client.urgent           $red            $red            $black           $red
