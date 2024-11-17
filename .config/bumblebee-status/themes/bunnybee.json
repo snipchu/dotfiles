@@ -44,6 +44,10 @@
     "fg": "white",
     "bg": "gray"
   },
+  "battery": {
+    "fg": "black",
+    "bg": "green"
+  },
   "system": {
     "fg": "white",
     "bg": "red"

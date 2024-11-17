@@ -180,12 +180,12 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 # color palette
-set $black      #1d20217d
-set $white      #ebdbb27d
-set $yellow     #d799217d
-set $red        #cc241d7d
-set $green      #b8bb267d
-set $gray       #3939397d
+set $black      #1d20218d
+set $white      #ebdbb28d
+set $yellow     #d799218d
+set $red        #cc241d8d
+set $green      #b8bb268d
+set $gray       #3939398d
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
 client.focused          $yellow         $yellow         $gray           $red
 client.unfocused        $green          $gray           $gray           $red
