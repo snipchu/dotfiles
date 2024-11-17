@@ -23,8 +23,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#1d2021' -sf '#1d2021' -sb '#b8bb26' -nf '#b8bb26' -fn 'Fira mono 9'
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -145,32 +143,32 @@ bar {
         i3bar_command i3bar -t
         colors {
             background $black
-            separator #ffffffff
-            focused_workspace   #b8bb26 #b8bb26 #1d2021
-            inactive_workspace  #1d2021 #1d2021 #ebdbb2
-            urgent_workspace    #cc241d #cc241d #ebdbb2
+            focused_workspace   #b8bb26 #b8bb26 #282828
+            inactive_workspace  #282828 #282828 #ebdbb2
+            urgent_workspace    #fb4934 #fb4932 #ebdbb2
         }
         status_command $HOME/.config/bumblebee-status/bumblebee-status \
-            -m playerctl date time amixer battery system \
+            -m playerctl datetime weather battery system \
             --iconset awesome-fonts \
-            -p date.format="%a, %b %d %Y" time.format="%T" \
-               playerctl.layout="playerctl.prev, playerctl.pause, playerctl.song, playerctl.next" \
-               amixer.percent_change="0" \
+            -p datetime.format=" %a, %b %d %Y  %T" \
+               weather.showcity="False" weather.unit="imperial" \
+               playerctl.layout="playerctl.prev, playerctl.pause, playerctl.next" \
             -t bunnybee
 }
 # gaps
 gaps inner 8
 # hide title bar
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 # personal bindings and stuff
-bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l blur
-# Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+#bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l blur
+bindsym $mod+d exec --no-startup-id $HOME/.config/rofi/launchers/type-2/launcher.sh
+bindsym $mod+x exec --no-startup-id $HOME/.config/rofi/applets/bin/powermenu.sh
+bindsym Print exec --no-startup-id $HOME/.config/rofi/applets/bin/screenshot.sh
+bindsym XF86AudioMute exec  --no-startup-id $HOME/.config/rofi/applets/bin/volume.sh
 
-# wallpaper
+# wallpape
 exec_always feh --bg-fill /usr/share/backgrounds/grassy-field-bg.jpg
-exec_always --no-startup-id picom -b
+exec_always --no-startup-id picom --experimental-backends --backend glx
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2
@@ -178,16 +176,15 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 2
 # Media volume controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 # color palette
-set $black      #1d20218d
+set $black      #2828288d
 set $white      #ebdbb28d
-set $yellow     #d799218d
-set $red        #cc241d8d
+set $yellow     #eaa61d8d
+set $red        #fb49348d
 set $green      #b8bb268d
-set $gray       #3939398d
+set $gray       #3535358d
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
-client.focused          $yellow         $yellow         $gray           $red
-client.unfocused        $green          $gray           $gray           $red
-client.focused_inactive $green          $gray           $gray           $red
-client.urgent           $red            $red            $gray           $red
+client.focused          $green          $green          $gray           $red
+client.unfocused        $gray           $gray           $gray           $red
+client.focused_inactive $gray           $gray           $gray           $red
+client.urgent           $red            $red            $white          $red

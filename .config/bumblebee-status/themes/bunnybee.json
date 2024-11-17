@@ -1,12 +1,13 @@
 {
 	"icons": [ "paxy97", "awesome-fonts" ],
   "colors": [{
-    "black": "#1d2021",
+    "black": "#282828",
+    "gray": "#353535",
     "white": "#ebdbb2",
-    "yellow": "#d79921",
-    "red": "#cc241d",
+    "yellow": "#eaa61d",
+    "red": "#fb4934",
     "green": "#b8bb26",
-    "gray": "#393939"
+    "blue": "#83a598"
   }],
 	"defaults": {
 		"warning": {
@@ -18,35 +19,27 @@
 			"bg": "red"
 		}
 	},
+  "cycle": [
+    {
+      "fg": "white",
+      "bg": "black"
+    },
+    {
+      "fg": "white",
+      "bg": "gray"
+    }
+  ],
   "battery": {
-		"charged": {
-			"fg": "black",
-			"bg": "green"
-		},
-		"AC": {
-			"fg": "black",
-			"bg": "green"
-		}
+    "fg": "black",
+    "bg": "green"
 	},
   "playerctl": {
     "fg": "black",
     "bg": "yellow"
   },
-  "date": {
-    "fg": "white",
-    "bg": "black"
-  },
-  "time": {
-    "fg": "white",
-    "bg": "black"
-  },
-  "amixer": {
-    "fg": "white",
-    "bg": "gray"
-  },
-  "battery": {
+  "weather": {
     "fg": "black",
-    "bg": "green"
+    "bg": "blue"
   },
   "system": {
     "fg": "white",
