@@ -1,0 +1,7 @@
+[general]
+import = [
+  "~/.config/alacritty/themes/gruvbox.toml"
+]
+
+[window]
+opacity = 0.9

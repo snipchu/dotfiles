@@ -106,7 +106,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -139,7 +139,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         font pango:FontAwesome, Fira mono 10
-        tray_output none
+        #tray_output none
+        # for now, until i figure out how to make the tray too!
         i3bar_command i3bar -t
         colors {
             background $black
@@ -148,7 +149,7 @@ bar {
             urgent_workspace    #fb4934 #fb4932 #ebdbb2
         }
         status_command $HOME/.config/bumblebee-status/bumblebee-status \
-            -m playerctl datetime weather battery system \
+            -m playerctl datetime weather battery network system \
             --iconset awesome-fonts \
             -p datetime.format=" %a, %b %d %Y  %T" \
                weather.showcity="False" weather.unit="imperial" \
@@ -160,29 +161,29 @@ gaps inner 8
 # hide title bar
 for_window [class="^.*"] border pixel 3
 # personal bindings and stuff
-#bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l blur
 bindsym $mod+d exec --no-startup-id $HOME/.config/rofi/launchers/type-2/launcher.sh
-bindsym $mod+x exec --no-startup-id $HOME/.config/rofi/applets/bin/powermenu.sh
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/rofi/applets/bin/powermenu.sh
 bindsym Print exec --no-startup-id $HOME/.config/rofi/applets/bin/screenshot.sh
 bindsym XF86AudioMute exec  --no-startup-id $HOME/.config/rofi/applets/bin/volume.sh
 
-# wallpape
-exec_always feh --bg-fill /usr/share/backgrounds/grassy-field-bg.jpg
-exec_always --no-startup-id picom --experimental-backends --backend glx
+# wallpaper
+exec_always feh --bg-fill $HOME/.config/i3/airplane.png
+exec_always --no-startup-id picom &
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 # Media volume controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 # color palette
-set $black      #2828288d
-set $white      #ebdbb28d
-set $yellow     #eaa61d8d
-set $red        #fb49348d
-set $green      #b8bb268d
-set $gray       #3535358d
+set $black      #282828bd
+set $gray       #353535bd
+set $white      #ebdbb2bd
+set $yellow     #eaa61dbd
+set $red        #fb4934bd
+set $green      #b8bb26bd
+set $blue       #83a598bd
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
 client.focused          $green          $green          $gray           $red
 client.unfocused        $gray           $gray           $gray           $red
